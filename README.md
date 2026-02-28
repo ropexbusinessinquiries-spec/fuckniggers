@@ -1,2 +1,0 @@
-# fuckniggers
-https://fuckniggers.biz
