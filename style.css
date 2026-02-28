@@ -148,7 +148,7 @@ body {
   left: 0;
   right: 0;
   z-index: 100;
-  padding: 0 20px;
+  padding: 0;
   height: 64px;
   display: flex;
   align-items: center;
@@ -163,6 +163,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  padding: 0 20px;
 }
 
 .nav-logo {
@@ -679,10 +680,6 @@ body {
 
 /* ── Responsive ── */
 @media (max-width: 768px) {
-  #navbar {
-    padding: 0 20px;
-  }
-
   .nav-links {
     gap: 16px;
   }
