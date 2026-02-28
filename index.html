@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Selenite 3.0</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- Background canvas -->
+  <canvas id="bg-canvas"></canvas>
+
+  <!-- External Link Modal -->
+  <div class="modal-overlay" id="modal-overlay">
+    <div class="modal">
+      <div class="modal-icon">↗</div>
+      <h3 class="modal-title">Opening External Link</h3>
+      <p class="modal-desc" id="modal-desc">You are about to leave Selenite and visit an external website. Continue?</p>
+      <div class="modal-actions">
+        <button class="btn-cancel" id="modal-cancel">Cancel</button>
+        <button class="btn-confirm" id="modal-confirm">Continue</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Nav -->
+  <nav id="navbar">
+    <div class="nav-inner">
+      <div class="nav-logo">Selenite<span class="logo-ver">3.0</span></div>
+      <ul class="nav-links">
+        <li><a href="#preview" class="nav-link">Preview</a></li>
+        <li><a href="#plans" class="nav-link">Purchase</a></li>
+        <li><a href="#download" class="nav-link">Download</a></li>
+        <li><a href="#terms" class="nav-link">Terms</a></li>
+        <li><button class="nav-support" id="support-btn">Support</button></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <section class="hero" id="home">
+    <div class="hero-content">
+      <div class="hero-badge">Gorilla Tag · Mod Menu</div>
+      <h1 class="hero-title">
+        Redefine<br />
+        <span class="hero-accent">What's Possible.</span>
+      </h1>
+      <p class="hero-sub">The most powerful mod menu for Gorilla Tag — built for precision, speed, and dominance.</p>
+      <div class="hero-cta">
+        <a href="#plans" class="btn-primary">Get Selenite</a>
+        <a href="#preview" class="btn-ghost">See Preview</a>
+      </div>
+    </div>
+    <div class="hero-glow"></div>
+  </section>
+
+  <!-- Preview -->
+  <section class="section" id="preview">
+    <div class="section-inner">
+      <div class="section-label">Preview</div>
+      <h2 class="section-title">See it in action</h2>
+      <p class="section-sub">A glimpse into what Selenite 3.0 brings to your game.</p>
+      <div class="preview-grid">
+        <div class="preview-card large">
+          <div class="preview-placeholder">
+            <span class="preview-icon">▶</span>
+            <p>Showcase Video</p>
+          </div>
+        </div>
+        <div class="preview-card">
+          <div class="preview-placeholder">
+            <span class="preview-icon">◈</span>
+            <p>Menu UI</p>
+          </div>
+        </div>
+        <div class="preview-card">
+          <div class="preview-placeholder">
+            <span class="preview-icon">⟡</span>
+            <p>Features</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Plans -->
+  <section class="section" id="plans">
+    <div class="section-inner">
+      <div class="section-label">Plans</div>
+      <h2 class="section-title">Choose your tier</h2>
+      <p class="section-sub">One-time payment. Lifetime access. No subscriptions.</p>
+      <div class="plans-grid">
+
+        <!-- Starter -->
+        <div class="plan-card">
+          <div class="plan-header">
+            <span class="plan-name">Starter</span>
+            <span class="plan-badge">Basic</span>
+          </div>
+          <div class="plan-price">$9.99<span class="plan-period">one-time</span></div>
+          <div class="plan-divider"></div>
+          <ul class="plan-features">
+            <li><span class="check">✓</span> Standard support</li>
+            <li><span class="check">✓</span> Minor updates</li>
+            <li><span class="check">✓</span> Full loader + menu injection access</li>
+          </ul>
+          <button class="btn-purchase" data-url="https://reseller.best">Purchase</button>
+        </div>
+
+        <!-- Pro -->
+        <div class="plan-card popular">
+          <div class="plan-header">
+            <span class="plan-name">Pro</span>
+            <span class="plan-badge popular-badge">● Most Popular</span>
+          </div>
+          <div class="plan-price">$14.99<span class="plan-period">one-time</span></div>
+          <div class="plan-divider"></div>
+          <ul class="plan-features">
+            <li><span class="check">✓</span> Everything in Starter</li>
+            <li><span class="check">✓</span> Priority support + frequent updates</li>
+            <li><span class="check">✓</span> Exclusive premium features</li>
+          </ul>
+          <button class="btn-purchase" data-url="https://reseller.best">Purchase</button>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Download -->
+  <section class="section" id="download">
+    <div class="section-inner">
+      <div class="section-label">Download</div>
+      <h2 class="section-title">Ready to install</h2>
+      <p class="section-sub">After purchasing, download and follow the setup guide.</p>
+      <div class="download-box">
+        <div class="download-info">
+          <div class="download-ver">Selenite 3.0</div>
+          <div class="download-meta">Latest stable release · Windows</div>
+        </div>
+        <button class="btn-primary" id="download-btn">Download Loader</button>
+      </div>
+      <div class="install-steps">
+        <div class="step"><span class="step-num">01</span><p>Purchase a plan above to receive your license key.</p></div>
+        <div class="step"><span class="step-num">02</span><p>Download the loader and run as administrator.</p></div>
+        <div class="step"><span class="step-num">03</span><p>Enter your license key and launch Gorilla Tag.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Terms -->
+  <section class="section" id="terms">
+    <div class="section-inner">
+      <div class="section-label">Terms</div>
+      <h2 class="section-title">Terms of Service</h2>
+      <div class="terms-box">
+        <div class="terms-block">
+          <h4>1. License & Usage</h4>
+          <p>Selenite 3.0 is sold as a one-time personal license. You may not redistribute, resell, or share your license key with others. Each key is tied to a single user.</p>
+        </div>
+        <div class="terms-block">
+          <h4>2. Refund Policy</h4>
+          <p>All purchases are final. Due to the digital nature of this product, refunds are not offered once a license key has been issued. Please review the preview before purchasing.</p>
+        </div>
+        <div class="terms-block">
+          <h4>3. Account Safety</h4>
+          <p>Use of mod menus may violate the terms of service of the game and could result in account bans. Selenite is not responsible for any consequences resulting from use of the software.</p>
+        </div>
+        <div class="terms-block">
+          <h4>4. Updates</h4>
+          <p>Updates are provided at the developer's discretion. Starter plan includes minor updates; Pro plan includes priority and frequent updates. Update continuity is not guaranteed indefinitely.</p>
+        </div>
+        <div class="terms-block">
+          <h4>5. Support</h4>
+          <p>Support is provided via our Discord server. Response times may vary. We reserve the right to deny support for accounts found to be in violation of these terms.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-logo">Selenite<span class="logo-ver">3.0</span></div>
+      <p class="footer-copy">© 2026 Selenite. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="main.js"></script>
+</body>
+</html>
