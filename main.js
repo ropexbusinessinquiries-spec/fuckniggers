@@ -168,7 +168,41 @@ confirmBtn.addEventListener('click', () => {
 });
 
 
-// ── Support Button ─────────────────────────────────────────
+// ── Mobile Sidebar ─────────────────────────────────────────
+const hamburger      = document.getElementById('hamburger-btn');
+const sidebarEl      = document.getElementById('sidebar');
+const sidebarOverlay = document.getElementById('sidebar-overlay');
+const sidebarClose   = document.getElementById('sidebar-close');
+const sidebarSupportBtn = document.getElementById('sidebar-support-btn');
+
+function openSidebar() {
+  sidebarEl.classList.add('active');
+  sidebarOverlay.classList.add('active');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeSidebar() {
+  sidebarEl.classList.remove('active');
+  sidebarOverlay.classList.remove('active');
+  document.body.style.overflow = '';
+}
+
+hamburger.addEventListener('click', openSidebar);
+sidebarClose.addEventListener('click', closeSidebar);
+sidebarOverlay.addEventListener('click', closeSidebar);
+
+// close sidebar when a link is tapped
+document.querySelectorAll('.sidebar-link').forEach(link => {
+  link.addEventListener('click', closeSidebar);
+});
+
+sidebarSupportBtn.addEventListener('click', () => {
+  closeSidebar();
+  openModal('https://discord.gg/y5m6EWUyQA', 'discord.gg/y5m6EWUyQA');
+});
+
+
+
 document.getElementById('support-btn').addEventListener('click', () => {
   openModal('https://discord.gg/y5m6EWUyQA', 'discord.gg/y5m6EWUyQA');
 });
