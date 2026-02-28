@@ -219,7 +219,31 @@ document.querySelectorAll('.btn-purchase').forEach(btn => {
 
 // ── Download Button ────────────────────────────────────────
 document.getElementById('download-btn').addEventListener('click', () => {
-  openModal('https://reseller.best', 'reseller.best (purchase required)');
+  window.location.href = 'https://wyvern.sh/public/loader/WyvernLoader.exe';
+});
+
+
+// ── UI Image Lightbox ──────────────────────────────────────
+const lightbox      = document.getElementById('lightbox');
+const lightboxBg    = document.getElementById('lightbox-bg');
+const lightboxClose = document.getElementById('lightbox-close');
+const uiCard        = document.getElementById('ui-card');
+
+uiCard.addEventListener('click', () => {
+  lightbox.classList.add('active');
+  document.body.style.overflow = 'hidden';
+});
+
+function closeLightbox() {
+  lightbox.classList.remove('active');
+  document.body.style.overflow = '';
+}
+
+lightboxBg.addEventListener('click', closeLightbox);
+lightboxClose.addEventListener('click', closeLightbox);
+
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape') closeLightbox();
 });
 
 
