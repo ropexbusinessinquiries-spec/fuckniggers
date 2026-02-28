@@ -7,29 +7,61 @@
   const canvas = document.getElementById('bg-canvas');
   const ctx = canvas.getContext('2d');
 
-  let W, H, particles = [], lines = [];
-  const PARTICLE_COUNT = 60;
+  let W, H;
+  let mouse = { x: -9999, y: -9999 };
+  let targetMouse = { x: -9999, y: -9999 };
+  const PARTICLE_COUNT = 80;
+  const CONNECT_DIST = 130;
+  const MOUSE_REPEL = 100;
+  let particles = [];
 
   function resize() {
     W = canvas.width = window.innerWidth;
     H = canvas.height = window.innerHeight;
   }
 
+  window.addEventListener('mousemove', e => {
+    targetMouse.x = e.clientX;
+    targetMouse.y = e.clientY;
+  });
+
+  window.addEventListener('mouseleave', () => {
+    targetMouse.x = -9999;
+    targetMouse.y = -9999;
+  });
+
   class Particle {
-    constructor() { this.reset(true); }
-    reset(initial) {
+    constructor() {
       this.x = Math.random() * W;
-      this.y = initial ? Math.random() * H : H + 10;
-      this.vx = (Math.random() - 0.5) * 0.15;
-      this.vy = -(Math.random() * 0.3 + 0.05);
-      this.r = Math.random() * 1.2 + 0.3;
-      this.alpha = Math.random() * 0.4 + 0.1;
+      this.y = Math.random() * H;
+      this.ox = this.x;
+      this.oy = this.y;
+      this.vx = (Math.random() - 0.5) * 0.3;
+      this.vy = (Math.random() - 0.5) * 0.3;
+      this.r = Math.random() * 1.5 + 0.4;
+      this.alpha = Math.random() * 0.35 + 0.1;
     }
+
     update() {
+      // drift
       this.x += this.vx;
       this.y += this.vy;
-      if (this.y < -10) this.reset(false);
+
+      // bounce
+      if (this.x < 0 || this.x > W) this.vx *= -1;
+      if (this.y < 0 || this.y > H) this.vy *= -1;
+
+      // mouse repulsion
+      const dx = this.x - mouse.x;
+      const dy = this.y - mouse.y;
+      const dist = Math.sqrt(dx * dx + dy * dy);
+      if (dist < MOUSE_REPEL) {
+        const force = (MOUSE_REPEL - dist) / MOUSE_REPEL;
+        this.x += (dx / dist) * force * 2.5;
+        this.y += (dy / dist) * force * 2.5;
+      }
     }
+
     draw() {
       ctx.beginPath();
       ctx.arc(this.x, this.y, this.r, 0, Math.PI * 2);
@@ -44,14 +76,13 @@
   }
 
   function drawLines() {
-    const maxDist = 120;
     for (let i = 0; i < particles.length; i++) {
       for (let j = i + 1; j < particles.length; j++) {
         const dx = particles[i].x - particles[j].x;
         const dy = particles[i].y - particles[j].y;
         const dist = Math.sqrt(dx * dx + dy * dy);
-        if (dist < maxDist) {
-          const alpha = (1 - dist / maxDist) * 0.06;
+        if (dist < CONNECT_DIST) {
+          const alpha = (1 - dist / CONNECT_DIST) * 0.08;
           ctx.beginPath();
           ctx.moveTo(particles[i].x, particles[i].y);
           ctx.lineTo(particles[j].x, particles[j].y);
@@ -60,11 +91,41 @@
           ctx.stroke();
         }
       }
+
+      // draw line from particle to mouse cursor
+      const mdx = particles[i].x - mouse.x;
+      const mdy = particles[i].y - mouse.y;
+      const mdist = Math.sqrt(mdx * mdx + mdy * mdy);
+      if (mdist < CONNECT_DIST * 1.4) {
+        const alpha = (1 - mdist / (CONNECT_DIST * 1.4)) * 0.18;
+        ctx.beginPath();
+        ctx.moveTo(particles[i].x, particles[i].y);
+        ctx.lineTo(mouse.x, mouse.y);
+        ctx.strokeStyle = `rgba(255,255,255,${alpha})`;
+        ctx.lineWidth = 0.6;
+        ctx.stroke();
+      }
     }
   }
 
+  function drawGlow() {
+    if (mouse.x < 0) return;
+    const grad = ctx.createRadialGradient(mouse.x, mouse.y, 0, mouse.x, mouse.y, 180);
+    grad.addColorStop(0, 'rgba(255,255,255,0.04)');
+    grad.addColorStop(1, 'rgba(255,255,255,0)');
+    ctx.beginPath();
+    ctx.arc(mouse.x, mouse.y, 180, 0, Math.PI * 2);
+    ctx.fillStyle = grad;
+    ctx.fill();
+  }
+
   function loop() {
+    // smooth mouse follow
+    mouse.x += (targetMouse.x - mouse.x) * 0.08;
+    mouse.y += (targetMouse.y - mouse.y) * 0.08;
+
     ctx.clearRect(0, 0, W, H);
+    drawGlow();
     particles.forEach(p => { p.update(); p.draw(); });
     drawLines();
     requestAnimationFrame(loop);
