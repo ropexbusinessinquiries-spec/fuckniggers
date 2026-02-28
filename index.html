@@ -7,6 +7,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;700;800&display=swap" rel="stylesheet" />
+  <link rel="icon" type="image/png" href="icon.png" />
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
@@ -17,7 +18,12 @@
   <!-- External Link Modal -->
   <div class="modal-overlay" id="modal-overlay">
     <div class="modal">
-      <div class="modal-icon">&#x2197;</div>
+      <div class="modal-icon">
+        <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect width="40" height="40" rx="10" fill="rgba(255,255,255,0.06)" stroke="rgba(255,255,255,0.12)" stroke-width="1"/>
+          <path d="M13 27L27 13M27 13H16M27 13V24" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </div>
       <h3 class="modal-title">Opening External Link</h3>
       <p class="modal-desc" id="modal-desc">You are about to leave Selenite and visit an external website. Continue?</p>
       <div class="modal-actions">
@@ -92,11 +98,8 @@
             <p>Showcase Video</p>
           </div>
         </div>
-        <div class="preview-card">
-          <div class="preview-placeholder">
-            <span class="preview-icon">&#x25C8;</span>
-            <p>Menu UI</p>
-          </div>
+        <div class="preview-card" id="ui-card">
+          <img src="ui.png" alt="Menu UI" class="ui-preview-img" id="ui-img" />
         </div>
         <div class="preview-card">
           <div class="preview-placeholder">
@@ -123,9 +126,9 @@
           <div class="plan-price">$9.99<span class="plan-period">one-time</span></div>
           <div class="plan-divider"></div>
           <ul class="plan-features">
-            <li><span class="check">&#x2713;</span> Standard support</li>
-            <li><span class="check">&#x2713;</span> Minor updates</li>
-            <li><span class="check">&#x2713;</span> Full loader + menu injection access</li>
+            <li><span class="check"><svg width="11" height="9" viewBox="0 0 11 9" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1 4L4 7.5L10 1" stroke="white" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span> Standard support</li>
+            <li><span class="check"><svg width="11" height="9" viewBox="0 0 11 9" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1 4L4 7.5L10 1" stroke="white" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span> Minor updates</li>
+            <li><span class="check"><svg width="11" height="9" viewBox="0 0 11 9" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1 4L4 7.5L10 1" stroke="white" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span> Full loader + menu injection access</li>
           </ul>
           <button class="btn-purchase" data-url="https://reseller.best">Purchase</button>
         </div>
@@ -137,9 +140,9 @@
           <div class="plan-price">$14.99<span class="plan-period">one-time</span></div>
           <div class="plan-divider"></div>
           <ul class="plan-features">
-            <li><span class="check">&#x2713;</span> Everything in Starter</li>
-            <li><span class="check">&#x2713;</span> Priority support + frequent updates</li>
-            <li><span class="check">&#x2713;</span> Exclusive premium features</li>
+            <li><span class="check"><svg width="11" height="9" viewBox="0 0 11 9" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1 4L4 7.5L10 1" stroke="white" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span> Everything in Starter</li>
+            <li><span class="check"><svg width="11" height="9" viewBox="0 0 11 9" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1 4L4 7.5L10 1" stroke="white" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span> Priority support + frequent updates</li>
+            <li><span class="check"><svg width="11" height="9" viewBox="0 0 11 9" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1 4L4 7.5L10 1" stroke="white" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span> Exclusive premium features</li>
           </ul>
           <button class="btn-purchase" data-url="https://reseller.best">Purchase</button>
         </div>
@@ -205,6 +208,13 @@
       <p class="footer-copy">&#169; 2026 Selenite. All rights reserved.</p>
     </div>
   </footer>
+
+  <!-- Image Lightbox -->
+  <div class="lightbox" id="lightbox">
+    <div class="lightbox-bg" id="lightbox-bg"></div>
+    <img class="lightbox-img" id="lightbox-img" src="ui.png" alt="Menu UI fullscreen" />
+    <button class="lightbox-close" id="lightbox-close">&#x2715;</button>
+  </div>
 
   <script src="main.js"></script>
 </body>
