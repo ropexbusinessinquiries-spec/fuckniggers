@@ -17,7 +17,7 @@
   <!-- External Link Modal -->
   <div class="modal-overlay" id="modal-overlay">
     <div class="modal">
-      <div class="modal-icon">↗</div>
+      <div class="modal-icon">&#x2197;</div>
       <h3 class="modal-title">Opening External Link</h3>
       <p class="modal-desc" id="modal-desc">You are about to leave Selenite and visit an external website. Continue?</p>
       <div class="modal-actions">
@@ -25,6 +25,24 @@
         <button class="btn-confirm" id="modal-confirm">Continue</button>
       </div>
     </div>
+  </div>
+
+  <!-- Mobile Sidebar Overlay -->
+  <div class="sidebar-overlay" id="sidebar-overlay"></div>
+
+  <!-- Mobile Sidebar -->
+  <div class="sidebar" id="sidebar">
+    <div class="sidebar-header">
+      <span class="sidebar-logo">Selenite<span class="logo-ver">3.0</span></span>
+      <button class="sidebar-close" id="sidebar-close">&#x2715;</button>
+    </div>
+    <ul class="sidebar-links">
+      <li><a href="#preview" class="sidebar-link">Preview</a></li>
+      <li><a href="#plans" class="sidebar-link">Purchase</a></li>
+      <li><a href="#download" class="sidebar-link">Download</a></li>
+      <li><a href="#terms" class="sidebar-link">Terms</a></li>
+    </ul>
+    <button class="sidebar-support" id="sidebar-support-btn">Support</button>
   </div>
 
   <!-- Nav -->
@@ -38,6 +56,9 @@
         <li><a href="#terms" class="nav-link">Terms</a></li>
         <li><button class="nav-support" id="support-btn">Support</button></li>
       </ul>
+      <button class="hamburger" id="hamburger-btn" aria-label="Open menu">
+        <span></span><span></span><span></span>
+      </button>
     </div>
   </nav>
 
@@ -67,19 +88,19 @@
       <div class="preview-grid">
         <div class="preview-card large">
           <div class="preview-placeholder">
-            <span class="preview-icon">▶</span>
+            <span class="preview-icon">&#x25B6;</span>
             <p>Showcase Video</p>
           </div>
         </div>
         <div class="preview-card">
           <div class="preview-placeholder">
-            <span class="preview-icon">◈</span>
+            <span class="preview-icon">&#x25C8;</span>
             <p>Menu UI</p>
           </div>
         </div>
         <div class="preview-card">
           <div class="preview-placeholder">
-            <span class="preview-icon">⟡</span>
+            <span class="preview-icon">&#x27E1;</span>
             <p>Features</p>
           </div>
         </div>
@@ -94,8 +115,6 @@
       <h2 class="section-title">Choose your tier</h2>
       <p class="section-sub">One-time payment. Lifetime access. No subscriptions.</p>
       <div class="plans-grid">
-
-        <!-- Starter -->
         <div class="plan-card">
           <div class="plan-header">
             <span class="plan-name">Starter</span>
@@ -104,29 +123,26 @@
           <div class="plan-price">$9.99<span class="plan-period">one-time</span></div>
           <div class="plan-divider"></div>
           <ul class="plan-features">
-            <li><span class="check">✓</span> Standard support</li>
-            <li><span class="check">✓</span> Minor updates</li>
-            <li><span class="check">✓</span> Full loader + menu injection access</li>
+            <li><span class="check">&#x2713;</span> Standard support</li>
+            <li><span class="check">&#x2713;</span> Minor updates</li>
+            <li><span class="check">&#x2713;</span> Full loader + menu injection access</li>
           </ul>
           <button class="btn-purchase" data-url="https://reseller.best">Purchase</button>
         </div>
-
-        <!-- Pro -->
         <div class="plan-card popular">
           <div class="plan-header">
             <span class="plan-name">Pro</span>
-            <span class="plan-badge popular-badge">● Most Popular</span>
+            <span class="plan-badge popular-badge">&#x25CF; Most Popular</span>
           </div>
           <div class="plan-price">$14.99<span class="plan-period">one-time</span></div>
           <div class="plan-divider"></div>
           <ul class="plan-features">
-            <li><span class="check">✓</span> Everything in Starter</li>
-            <li><span class="check">✓</span> Priority support + frequent updates</li>
-            <li><span class="check">✓</span> Exclusive premium features</li>
+            <li><span class="check">&#x2713;</span> Everything in Starter</li>
+            <li><span class="check">&#x2713;</span> Priority support + frequent updates</li>
+            <li><span class="check">&#x2713;</span> Exclusive premium features</li>
           </ul>
           <button class="btn-purchase" data-url="https://reseller.best">Purchase</button>
         </div>
-
       </div>
     </div>
   </section>
@@ -159,7 +175,7 @@
       <h2 class="section-title">Terms of Service</h2>
       <div class="terms-box">
         <div class="terms-block">
-          <h4>1. License & Usage</h4>
+          <h4>1. License &amp; Usage</h4>
           <p>Selenite 3.0 is sold as a one-time personal license. You may not redistribute, resell, or share your license key with others. Each key is tied to a single user.</p>
         </div>
         <div class="terms-block">
@@ -186,7 +202,7 @@
   <footer class="footer">
     <div class="footer-inner">
       <div class="footer-logo">Selenite<span class="logo-ver">3.0</span></div>
-      <p class="footer-copy">© 2026 Selenite. All rights reserved.</p>
+      <p class="footer-copy">&#169; 2026 Selenite. All rights reserved.</p>
     </div>
   </footer>
 
